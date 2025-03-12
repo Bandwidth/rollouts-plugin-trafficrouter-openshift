@@ -1,0 +1,21 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  schemaVersion: v1.0.0
+  name: rollouts-plugin-trafficrouter-openshift
+  description: Forked from
+    https://github.com/argoproj-labs/rollouts-plugin-trafficrouter-openshift
+  annotations:
+    github.com/project-slug: Bandwidth/rollouts-plugin-trafficrouter-openshift
+  organization: BW
+  costCenter: Technology - Network Engineering
+  platformType: OCP4
+  buildPlatform: GitHub Actions
+spec:
+  type: Service
+  owner: github/band-platform
+  lifecycle: |
+    Prototype
+    dependsOn:
+        - resource:platform/OCP4
+        - resource:cost-center/Technology - Network Engineering
