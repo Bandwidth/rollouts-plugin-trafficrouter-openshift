@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  schemaVersion: v1.0.0
+  name: rollouts-plugin-trafficrouter-openshift-location
+  description: Links to additional entities in the
+    rollouts-plugin-trafficrouter-openshift repository.
+  annotations:
+    github.com/project-slug: Bandwidth/rollouts-plugin-trafficrouter-openshift
+spec:
+  targets:
+    - ./component.yaml
