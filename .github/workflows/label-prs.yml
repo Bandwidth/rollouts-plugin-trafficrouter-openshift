@@ -1,0 +1,23 @@
+name: Label Pull Requests
+run-name: Label Pull Requests
+
+on:
+  pull_request:
+    types:
+      - opened
+
+permissions:
+  id-token: write
+  contents: write
+  pull-requests: write
+  repository-projects: read
+jobs:
+  label:
+    name: Label Pull Requests
+    runs-on: ${{ fromJSON(vars.SWI_GLORG_PROD_UBUNTU_2204) }}
+    steps:
+      - name: Label Pull Requests
+        uses: Bandwidth/label-pull-request-action@v1
+        with:
+          label: 'minor-version'
+          possible-labels: '{"skip-version": "5319E7", "major-version": "00FF00", "minor-version": "FFFF00", "patch-version": "FF0000"}'

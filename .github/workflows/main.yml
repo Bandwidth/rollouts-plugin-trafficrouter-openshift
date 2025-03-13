@@ -13,10 +13,10 @@ on:
 jobs:
   unit-tests:
     name: Unit tests running
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3.1.0
+        uses: actions/checkout@v4
 
       - name: Set up Go
         uses: actions/setup-go@v5
@@ -29,10 +29,10 @@ jobs:
 
   linting:
     name: Go code lint and gosec
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3.1.0
+        uses: actions/checkout@v4
 
       - name: Set up Go
         uses: actions/setup-go@v5
@@ -49,10 +49,10 @@ jobs:
 
   build:
     name: Build creation
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3.1.0
+        uses: actions/checkout@v4
 
       - name: Set up Go
         uses: actions/setup-go@v5
@@ -62,3 +62,17 @@ jobs:
       - name: Build creation
         run: |
           make build
+    
+  release:
+    name: Create a release
+    needs: build
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Release
+        uses: Bandwidth/semver-releaser@PLAT-4466
+        with:
+          new_version: ${{ github.event.inputs.new-version || '' }}
+          artifacts: 'dist/*'
