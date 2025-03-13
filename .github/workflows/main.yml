@@ -66,7 +66,7 @@ jobs:
   release:
     name: Create a release
     needs: build
-    runs-on: ubuntu-24.04
+    runs-on: ${{ fromJSON(vars.SWI_GLORG_PROD_UBUNTU_2204) }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
