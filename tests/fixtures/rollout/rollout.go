@@ -62,7 +62,7 @@ func UpdateWithoutConflict(rollout *rolloutsv1alpha1.Rollout, updateFunc func(ro
 	})
 }
 
-func HasTransitionedToCanary(expectedReplicas int) matcher.GomegaMatcher {
+func HasTransitionedToCanary(expectedReplicas int32) matcher.GomegaMatcher {
 	return WithTransform(func(rollout *rolloutsv1alpha1.Rollout) bool {
 		ns := rollout.Namespace
 		selector, err := metav1.LabelSelectorAsSelector(rollout.Spec.Selector)
